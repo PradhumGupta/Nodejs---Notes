@@ -1,6 +1,7 @@
 import express from "express";
 import 'dotenv/config';
 import expressLayouts from 'express-ejs-layouts';
+import methodOverride from 'method-override';
 import indexRoutes from "./server/routes/index.js";
 import dashboardRoutes from './server/routes/dashboard.js';
 import connectDB from "./server/config/db.js";
@@ -29,6 +30,7 @@ app.use(passport.session());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride("_method"));
 
 // Connect to Database
 connectDB();
